@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>개인정보입력</h1>
+<form action="/Mission-Web/PInfoInput"  method="post">
+<span>이름 : </span> <input type="text" name="name"><br />
+<span>아이디 : </span> <input type="text" name="id"><br />
+<span>패스워드 : </span> <input type="password" name="pwd"><br />
+<span>성별 : </span> 남<input type="radio" name="gender" value="m"> 여 <input type="radio" name="gender" value="f"><br />
+<span>메일 수신 여부 : </span> 
+공지메일<input type= "checkbox" name="gongji" />
+광고메일<input type= "checkbox" name="gwanggo" />
+배송확인메일<input type= "checkbox" name="baesong" />
+<br />
+<select name="job">
+	<option value="company">회사원</option>
+	<option value="student">학생</option>
+	<option value="etc">기타</option>
+</select>
+<br>
+<button>취소</button>
+<input type="submit" value="제출">
+</form>
+</body>
+</html>
