@@ -1,3 +1,4 @@
+<%@page import="kr.ac.kopo.board.vo.MemberVO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="kr.ac.kopo.util.ConnectionFactory"%>
@@ -19,6 +20,18 @@
 	ResultSet rs = pstmt.executeQuery();
 	
 	rs.next();
+	
+	String id = rs.getString("ID");
+	String name = rs.getString("NAME");
+	String emailAddr = rs.getString("EMAIL_ID")+"@"+rs.getString("EMAIL_DOMAIN");
+	String tel = rs.getString("TEL1")+"-"+rs.getString("TEL2")+"-"+rs.getString("TEL3");
+	String address = "["+rs.getString("POST")+"]"+rs.getString("BASIC_ADDR") + rs.getString("DETAIL_ADDR");
+	String type =  rs.getString("TYPE");
+	String regDate = rs.getString("REG_DATE");
+	
+	MemberVO membervo = new MemberVO(id, name, type, regDate, address, tel, emailAddr );
+	
+	pageContext.setAttribute("member", membervo);
     %>
 <!DOCTYPE html>
 <html>
@@ -43,31 +56,31 @@
 		<table border="1" style="width:80%">
 			<tr>
 				<th width="25%">아이디</th>
-				<td><%= rs.getString("ID") %></td>
+				<td>${member.id }</td>
 			</tr>
 			<tr>
 				<th width="25%">이름</th>
-				<td><%= rs.getString("NAME") %></td>
+				<td>${member.name}</td>
 			</tr>
 			<tr>
 				<th width="25%">이메일</th>
-				<td><%= rs.getString("EMAIL_ID")+"@"+rs.getString("EMAIL_DOMAIN") %></td>
+				<td>${member.emailAddr}</td>
 			</tr>
 			<tr>
 				<th width="25%">전화번호</th>
-				<td><%= rs.getString("TEL1")+"-"+rs.getString("TEL2")+"-"+rs.getString("TEL3") %></td>
+				<td>${member.telephone}</td>
 			</tr>
 			<tr>
 				<th width="25%">주소</th>
-				<td><%= "["+rs.getString("POST")+"]"+rs.getString("BASIC_ADDR") + rs.getString("DETAIL_ADDR") %></td>
+				<td>${member.address}</td>
 			</tr>
 			<tr>
 				<th width="25%">유형</th>
-				<td><%= rs.getString("TYPE") %></td>
+				<td>${member.type}</td>
 			</tr>
 			<tr>
 				<th width="25%">가입일</th>
-				<td><%= rs.getString("REG_DATE") %></td>
+				<td>${member.regDate}</td>
 			</tr>
 		</table>
 		<br>

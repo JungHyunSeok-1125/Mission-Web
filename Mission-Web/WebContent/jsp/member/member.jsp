@@ -23,6 +23,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="/Mission-Web/resources/js/jquery-3.6.0.min.js"></script>
+<style>
+	.memberTable{
+		hover
+	}
+</style>
 <script>
 	$(document).ready(function (){
 		$("#topchk").click(function(){
@@ -74,7 +79,7 @@
 	                		   
 	                	   }
 	                   %>
-	                   <tr class="memberTable" onClick="location.href='memberDetail.jsp?id=<%=id %>'">
+	                   <tr class="memberTable" onClick="location.href='memberDetail.jsp?id=<%=id %>'" >
 	                     <td onclick="event.cancelBubble=true" class="chkbox"><input class="chkBox" type="checkbox" name="chkbox"/></td>
 	                     <td><%= i %></td>
 	                     <td><%= rs.getString("ID") %></td>

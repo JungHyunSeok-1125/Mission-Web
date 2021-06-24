@@ -18,6 +18,8 @@
 	PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 	ResultSet rs = pstmt.executeQuery();
 	
+	JDBCClose.close(conn,pstmt);
+	
 %>
 
 <!DOCTYPE html>
